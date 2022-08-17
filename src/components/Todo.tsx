@@ -1,12 +1,22 @@
 // Define this
-export interface TodoType {}
+export interface TodoType {
+  text: string
+  completed: boolean
+}
 
 // Define this
-interface StateProps {}
+interface StateProps {
+  todo: TodoType
+  toggleTodoCompletion: (target: TodoType) => void
+  removeTodo: (target: TodoType) => void
+}
 
 export const Todo = (props: StateProps) => {
 
   const { todo, toggleTodoCompletion, removeTodo } = props
+
+//boolean check
+const boolean: boolean = todo.completed as boolean
 
   return (
     <li className="todo">
@@ -14,7 +24,7 @@ export const Todo = (props: StateProps) => {
         <input
           className="completed-checkbox"
           type="checkbox"
-          checked={todo.completed}
+          checked={boolean}
           onChange={() => toggleTodoCompletion(todo)}
         />
       </div>
